@@ -14,12 +14,19 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
+      # 1️⃣ 取得專案程式碼
       - uses: actions/checkout@v4
 
+      # 2️⃣ 設定 Node 環境
       - uses: actions/setup-node@v4
         with:
-          node-version: 18
+          node-version: 20
 
+      # 3️⃣ 安裝專案依賴
       - run: npm install
 
+      # 4️⃣ 先跑測試
+      - run: npm run test:unit
+
+      # 5️⃣ build 專案
       - run: npm run build
